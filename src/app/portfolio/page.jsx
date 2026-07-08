@@ -37,7 +37,10 @@ function Portfolio() {
 
   useEffect(() => {
     window.vkAsyncInit = initVkPlaylist;
-    initVkPlaylist();
+  
+    if (window.VK?.Widgets?.Playlist) {
+      initVkPlaylist();
+    }
   }, [initVkPlaylist]);
 
   useEffect(() => {
@@ -107,11 +110,11 @@ function Portfolio() {
 
   return (
     <section className={styles.portfolio} ref={ref}>
-      <Script
+      {/* <Script
         src="https://vk.com/js/api/openapi.js?168"
         strategy="afterInteractive"
         onLoad={initVkPlaylist}
-      />
+      /> */}
       <h2 className={styles.portfolio_title}>Некоторые примеры наших работ</h2>
       <div className={styles.portfolio__wrapper}>
         <div className={styles.portfolio__audio}>

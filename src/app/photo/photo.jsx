@@ -2,12 +2,12 @@
 import "./photo.css";
 const one = "/photo/1.JPG";
 const two = "/photo/2.jpeg";
-const three = "/photo/3.JPG";
-const four = "/photo/4.JPG";
+const three = "/photo/3.jpg";
+const four = "/photo/4.jpg";
 const five = "/photo/5.JPG";
 const six = "/photo/6.jpg";
 const seven = "/photo/7.jpg";
-const eight = "/photo/8.jpg";
+const eight = "/photo/8.JPG";
 const nine = "/photo/9.jpg";
 const ten = "/photo/10.jpg";
 const eleven = "/photo/11.JPG";
