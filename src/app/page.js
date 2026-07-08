@@ -1,9 +1,11 @@
 "use client";
 import styles from "./page.module.css";
 import { useEffect, useRef, useState } from "react";
-import video from "../video/video2.m4a";
+
 import wall from "../images/wall2.png";
 import { getImageSrc } from "../utils/utils";
+
+const video = "/video2.m4a";
 
 export default function Home() {
   const videoRef = useRef();

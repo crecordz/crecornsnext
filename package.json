@@ -11,9 +11,9 @@
   "dependencies": {
     "file-loader": "^6.2.0",
     "gsap": "^3.12.5",
-    "next": "15.0.1",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-intersection-observer": "^10.0.3",
     "react-slick": "^0.31.0",
     "slick-carousel": "^1.8.1"
