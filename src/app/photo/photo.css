@@ -1,0 +1,88 @@
+.photo {
+  background-color: #000000;
+  max-width: 1280px;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: var(--page-padding-top);
+  padding-bottom: var(--page-padding-bottom);
+  box-sizing: border-box;
+}
+
+.photo__title {
+  font-size: 2rem;
+  line-height: 1.5rem;
+  margin-top: var(--page-title-margin-top);
+  margin-bottom: var(--page-title-margin-bottom);
+}
+
+.photo__gallery {
+  max-width: 1280px;
+  box-sizing: border-box;
+  flex: none;
+  position: relative;
+}
+
+.photo__image {
+  width: 400px;
+  height: 60vh;
+  filter: grayscale(100%);
+  transition: all 0.6s;
+  display: block;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.photo__image:hover {
+  filter: grayscale(0);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.slick-slide > div {
+  margin: 20px 20px;
+}
+.slick-list {
+  margin: 0 -20px;
+}
+
+.slick-loading .slick-list {
+  background: #000000 center center no-repeat;
+}
+
+.slick-dots li button:before {
+  background-color: #afff05;
+  text-indent: -9999px;
+  overflow: hidden;
+  border-radius: 50%;
+  transform: scale(0.5);
+}
+
+.slick-arrow {
+  width: 50px;
+  height: 50px;
+}
+@media (max-width: 700px) {
+  .photo {
+    padding-top: var(--page-padding-top);
+  }
+}
+
+@media (max-width: 550px) {
+  .photo__title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .photo__image {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 360px) {
+  .photo__image {
+    height: 40vh;
+  }
+}

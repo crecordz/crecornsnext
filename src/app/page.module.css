@@ -26,143 +26,146 @@
     --button-secondary-hover: #1a1a1a;
   }
 }
+.info {
+  background-color: #000000;
+  color: #fff;
+  padding-top: 60px;
+  display: flex;
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: relative;
+}
 
-.main {
+.info__titles {
+  position: absolute;
+  bottom: 42%;
+  left: 0;
+  right: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
-
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
-
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-}
-
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 180px;
-}
-
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
   align-items: center;
-  gap: 8px;
 }
 
-.footer img {
-  flex-shrink: 0;
+.info__title {
+  font-size: 62px;
+  margin: 0;
+  text-align: center;
+  z-index: 1;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
+.info__subtitle {
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 10px 5px 0 5px;
+  z-index: 1;
+  text-align: center;
+  box-sizing: border-box;
+}
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.info__video {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
 
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.info__image {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.info__video_fade {
+  opacity: 0;
+}
+
+.pause-button {
+  position: absolute;
+  left: 5%;
+  bottom: 10%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  z-index: 1;
+  padding: 0;
+}
+
+.pause-icon {
+  width: 100%;
+  height: 100%;
+  fill: white;
+  stroke: white;
+  stroke-width: 5;
+}
+
+.pause-icon circle {
+  fill: none;
+  stroke-width: 8;
+  transition: stroke-dasharray 0.25s;
+}
+
+.pause-icon rect,
+.pause-icon polygon {
+  fill: white;
+}
+.progress-bg {
+  stroke: rgb(99, 99, 99);
+}
+
+.progress-bar {
+  stroke: white;
+  transition: stroke-dasharray 0.25s;
+}
+
+@media (max-width: 957px) {
+  .info__title {
+    font-size: 48px;
+  }
+  .info__subtitle {
+    font-size: 18px;
   }
 }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
+@media (max-width: 680px) {
+  .info__title {
+    font-size: 35px;
   }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
+  .info__subtitle {
     font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+@media (max-width: 500px) {
+  .info__title {
+    max-width: 450px;
+  }
+  .info__subtitle {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 418px) {
+  .info__title {
+    max-width: 350px;
+  }
+  .info__subtitle {
+    max-width: 400px;
   }
 }

@@ -1,0 +1,130 @@
+.portfolio {
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  flex-shrink: 0;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-top: var(--page-padding-top);
+  padding-bottom: var(--page-padding-bottom);
+  box-sizing: border-box;
+}
+
+.portfolio__wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.portfolio__audio {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.portfolio_title {
+  font-size: 2rem;
+  margin-top: var(--page-title-margin-top);
+  margin-bottom: var(--page-title-margin-bottom);
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.audioitems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio__video-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-top: 40px;
+}
+
+.portfolio__paragraph {
+  width: 100%;
+  font-family: "Commissioner";
+  font-size: 18px;
+  text-align: justify;
+  line-height: 2.3rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.portfolio__item {
+  margin-bottom: 60px;
+  margin-top: 0;
+  max-width: 512px;
+}
+
+.portfolio__item:last-child {
+  margin-bottom: 0;
+}
+
+.portfolio__link {
+  color: #afff05;
+}
+
+@media (max-width: 1111px) {
+  .portfolio__item {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .portfolio__wrapper {
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
+  .portfolio__audio {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .portfolio__item {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .portfolio__item:first-child {
+    margin-top: 40px;
+  }
+  .portfolio__paragraph {
+    max-width: 382px;
+  }
+}
+@media (max-width: 700px) {
+  .portfolio {
+    padding-top: var(--page-padding-top);
+    padding-bottom: var(--page-padding-bottom);
+  }
+}
+
+@media (max-width: 550px) {
+  .portfolio_title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .portfolio__audio {
+    display: flex;
+    justify-content: center;
+  }
+  .portfolio__paragraph {
+    max-width: 310px;
+  }
+}
+
+@media (max-width: 352px) {
+  .portfolio__paragraph {
+    max-width: 280px;
+  }
+}

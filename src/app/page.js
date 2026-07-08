@@ -1,95 +1,122 @@
-import Image from "next/image";
+"use client";
 import styles from "./page.module.css";
+import { useEffect, useRef, useState } from "react";
+import video from "../video/video2.m4a";
+import wall from "../images/wall2.png";
+import { getImageSrc } from "../utils/utils";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const videoRef = useRef();
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [mobileWidth, setMobileWidth] = useState(false);
+  const [progress, setProgress] = useState(0);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    const video = videoRef.current;
+    const updateProgress = () => {
+      const progress = (video.currentTime / video.duration) * 314.16;
+      setProgress(progress);
+    };
+    video.addEventListener("timeupdate", updateProgress);
+
+    return () => {
+      video.removeEventListener("timeupdate", updateProgress);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 700) {
+        setMobileWidth(true);
+      } else {
+        setMobileWidth(false);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const togglePlayPause = () => {
+    const video = videoRef.current;
+    if (isPlaying) {
+      video.pause();
+    } else {
+      video.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <section className={styles.info}>
+      <div className={styles.info__titles}>
+        <h2 className={styles.info__title}>Cтудия звукозаписи в Твери</h2>
+
+        <p className={styles.info__subtitle}>
+          Запись вокала, сведение, мастеринг, аранжировка
+        </p>
+      </div>
+      <div>
+        {mobileWidth ? (
+          <img
+            src={getImageSrc(wall)}
+            className={styles.info__image}
+            alt="background"
+          />
+        ) : (
+          <video
+            className={styles.info__video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            ref={videoRef}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            <source src={video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
+      </div>
+      {!mobileWidth ? (
+        <button className={styles.pauseButton} onClick={togglePlayPause}>
+          <svg className={styles.pauseIcon} viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" className={styles.progressBg} />
+            <circle
+              cx="60"
+              cy="60"
+              r="50"
+              className={styles.progressBar}
+              strokeDasharray={`${progress} 314`}
+              strokeDashoffset="0"
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            {isPlaying ? (
+              <>
+                <rect
+                  x="48"
+                  y="42"
+                  width="4"
+                  height="35"
+                  className={styles.pauseIconBar}
+                />
+                <rect
+                  x="68"
+                  y="42"
+                  width="4"
+                  height="35"
+                  className={styles.pauseIconBar}
+                />
+              </>
+            ) : (
+              <polygon points="50,45 75,60 50,75" className={styles.playIcon} />
+            )}
+          </svg>
+        </button>
+      ) : null}
+    </section>
   );
 }
