@@ -9,6 +9,8 @@
   padding-top: var(--page-padding-top);
   padding-bottom: var(--page-padding-bottom);
   box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 .reviews__title {
@@ -20,7 +22,8 @@
 .reviews__map {
   max-width: 560px;
   width: 100%;
-  height: 800px;
+  height: calc(100dvh - var(--page-padding-top) - var(--page-padding-bottom) - 90px);
+  min-height: 240px;
   overflow: hidden;
   position: relative;
 }

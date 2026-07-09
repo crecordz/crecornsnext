@@ -1,21 +1,26 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
-  --page-padding-top: 120px;
-  --page-padding-bottom: 120px;
-  --page-title-margin-top: 27px;
-  --page-title-margin-bottom: 100px;
+  --header-height: 80px;
+  --footer-height: 64px;
+  --page-padding-top: 110px;
+  --page-padding-bottom: 72px;
+  --page-title-margin-top: 0;
+  --page-title-margin-bottom: 40px;
 }
 
 html {
   color-scheme: dark;
   background-color: #000000;
+  height: 100%;
+  overflow: hidden;
 }
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -24,6 +29,23 @@ body {
   font-family: "Commissioner";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1;
+  width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+.site-main > section {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 * {
@@ -39,9 +61,9 @@ a {
 
 @media (max-width: 700px) {
   :root {
-    --page-padding-top: 93px;
-    --page-padding-bottom: 80px;
-    --page-title-margin-top: 19px;
-    --page-title-margin-bottom: 72px;
+    --footer-height: 52px;
+    --page-padding-top: 92px;
+    --page-padding-bottom: 56px;
+    --page-title-margin-bottom: 24px;
   }
 }

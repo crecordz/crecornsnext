@@ -8,6 +8,8 @@
   padding-top: var(--page-padding-top);
   padding-bottom: var(--page-padding-bottom);
   box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
 }
 
 .photo__title {
@@ -26,7 +28,8 @@
 
 .photo__image {
   width: 400px;
-  height: 60vh;
+  height: calc(100dvh - var(--page-padding-top) - var(--page-padding-bottom) - 110px);
+  min-height: 220px;
   filter: grayscale(100%);
   transition: all 0.6s;
   display: block;
@@ -77,12 +80,12 @@
 
 @media (max-width: 420px) {
   .photo__image {
-    height: 50vh;
+    height: calc(100dvh - var(--page-padding-top) - var(--page-padding-bottom) - 96px);
   }
 }
 
 @media (max-width: 360px) {
   .photo__image {
-    height: 40vh;
+    min-height: 180px;
   }
 }

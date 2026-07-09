@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
     <html lang="ru">
       <body className={`${commissioner.variable}`}>
         <Header />
-        {children}
+        <main className="site-main">{children}</main>
 
         {/* Yandex.Metrika counter */}
         <Script id="yandex-metrika" strategy="afterInteractive">
