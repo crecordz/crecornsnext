@@ -3,7 +3,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   flex-shrink: 0;
@@ -17,6 +17,7 @@
 
 .equipment__title {
   font-size: 2rem;
+  line-height: var(--page-title-line-height);
   margin-top: var(--page-title-margin-top);
   margin-bottom: var(--page-title-margin-bottom);
   padding: 0 30px;
