@@ -3,6 +3,7 @@ import { forwardRef, useEffect, useRef } from "react";
 import styles from "./page.module.css";
 import { animateElement } from "../../utils/utils";
 
+
 const Services = () => {
   const ref = useRef();
   const el = useRef();
@@ -123,4 +124,8 @@ const Services = () => {
   );
 };
 
+// export const metadata = {
+//   title: "Услуги и цены — студия звукозаписи C.Records, Тверь",
+//   description: "Запись вокала 2000₽/час, сведение от 5000₽, мастеринг 1000₽, аранжировка от 10000₽. Студия в Твери.",
+// };
 export default Services;

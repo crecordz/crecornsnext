@@ -25,7 +25,11 @@ function Portfolio() {
 
   const initVkPlaylist = useCallback(() => {
     if (!window.VK?.Widgets?.Playlist) return;
-
+    const container = document.getElementById(VK_PLAYLIST.elementId);
+    if (!container) return;
+  
+    container.innerHTML = "";
+  
     window.VK.Widgets.Playlist(
       VK_PLAYLIST.elementId,
       VK_PLAYLIST.ownerId,
@@ -38,9 +42,9 @@ function Portfolio() {
   useEffect(() => {
     window.vkAsyncInit = initVkPlaylist;
   
-    if (window.VK?.Widgets?.Playlist) {
-      initVkPlaylist();
-    }
+    // if (window.VK?.Widgets?.Playlist) {
+    //   initVkPlaylist();
+    // }
   }, [initVkPlaylist]);
 
   useEffect(() => {
@@ -110,11 +114,11 @@ function Portfolio() {
 
   return (
     <section className={styles.portfolio} ref={ref}>
-      {/* <Script
+      <Script
         src="https://vk.com/js/api/openapi.js?168"
         strategy="afterInteractive"
-        onLoad={initVkPlaylist}
-      /> */}
+        // onLoad={initVkPlaylist}
+      />
       <h2 className={styles.portfolio_title}>Некоторые примеры наших работ</h2>
       <div className={styles.portfolio__wrapper}>
         <div className={styles.portfolio__audio}>

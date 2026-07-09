@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <section className={styles.info}>
       <div className={styles.info__titles}>
-        <h2 className={styles.info__title}>Cтудия звукозаписи в Твери</h2>
+        <h2 className={styles.info__title}>Студия звукозаписи в Твери</h2>
 
         <p className={styles.info__subtitle}>
           Запись вокала, сведение, мастеринг, аранжировка
