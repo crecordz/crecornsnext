@@ -1,91 +1,35 @@
 "use client";
-import { forwardRef, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./page.module.css";
-import { animateElement } from "../../utils/utils";
-
+import { animateElementsStagger } from "../../utils/utils";
 
 const Services = () => {
-  const ref = useRef();
   const el = useRef();
   const el2 = useRef();
   const el3 = useRef();
   const el4 = useRef();
   const el5 = useRef();
+  const el6 = useRef();
 
   useEffect(() => {
-    const pin1 = animateElement(
-      ref,
-      el,
-      "top+=20% center",
-      "bottom center",
-      "0",
-      "10vh",
-      0.4,
-      "power4.out",
-      0.1
+    const tween = animateElementsStagger(
+      [el, el2, el3, el4, el5, el6],
+      40,        // на сколько px вылетают снизу
+      0.6,       // длительность каждого
+      0.15,      // задержка между элементами
+      "power4.out"
     );
-    const pin2 = animateElement(
-      ref,
-      el2,
-      "top+=20% center",
-      "bottom center",
-      "0",
-      "10vh",
-      0.6,
-      "power4.out",
-      0.1
-    );
-    const pin3 = animateElement(
-      ref,
-      el3,
-      "top+=20% center",
-      "bottom center",
-      "0",
-      "10vh",
-      0.8,
-      "power4.out",
-      0.1
-    );
-    const pin4 = animateElement(
-      ref,
-      el4,
-      "top+=20% center",
-      "bottom center",
-      "0",
-      "10vh",
-      0.9,
-      "power4.out",
-      0.1
-    );
-    const pin5 = animateElement(
-      ref,
-      el5,
-      "top+=20% center",
-      "bottom center",
-      "0",
-      "10vh",
-      1,
-      "power4.out",
-      0.1
-    );
-    return () => {
-      pin1.kill();
-      pin2.kill();
-      pin3.kill();
-      pin4.kill();
-      pin5.kill();
-    };
-  }, [ref]);
+
+    return () => tween.kill();
+  }, []);
 
   return (
-    <section className={`${styles.services} `} ref={ref} id="services">
+    <section className={`${styles.services} `} id="services">
       <h2 className={styles.services__title}>Наши услуги и цены</h2>
       <ul className={`${styles.services__list} `}>
-        <li className={styles.services__item} ref={el}>
+        <li className={styles.services__item} style={{ opacity: 0 }} ref={el}>
           <p className={styles.services__name}>Запись</p>
-          <p
-            className={`${styles.services__price} ${styles.services__price_right}`}
-          >
+          <p className={`${styles.services__price} ${styles.services__price_right}`}>
             2000р/час <br />
             <span className={styles.services__price_high}>
               (в выходные 3000р/час)
@@ -93,39 +37,35 @@ const Services = () => {
           </p>
         </li>
 
-        <li className={styles.services__item} ref={el3}>
+        <li className={styles.services__item} style={{ opacity: 0 }} ref={el3}>
           <p className={styles.services__name}>Сведение</p>
-          <p
-            className={`${styles.services__price} ${styles.services__price_right}`}
-          >
+          <p className={`${styles.services__price} ${styles.services__price_right}`}>
             от 5000р <br />
             <span className={styles.services__price_high}>
               (В зависимости от сложности)
             </span>
           </p>
         </li>
-        <li className={styles.services__item} ref={el4}>
+        <li className={styles.services__item} style={{ opacity: 0 }} ref={el4}>
           <p className={styles.services__name}>Мастеринг трека</p>
           <p className={styles.services__price}>1000р</p>
         </li>
-        <li className={styles.services__item} ref={el5}>
+        <li className={styles.services__item} style={{ opacity: 0 }} ref={el5}>
           <p className={styles.services__name}>Аранжировка</p>
-          <p
-            className={`${styles.services__price} ${styles.services__price_right}`}
-          >
+          <p className={`${styles.services__price} ${styles.services__price_right}`}>
             от 10000р <br />
             <span className={styles.services__price_high}>
               (В зависимости от сложности)
             </span>
           </p>
         </li>
+        <li className={styles.services__item} style={{ opacity: 0 }} ref={el6}>
+          <p className={styles.services__name}>Дистрибьюция трека</p>
+          <p className={styles.services__price}>1000р</p>
+        </li>
       </ul>
     </section>
   );
 };
 
-// export const metadata = {
-//   title: "Услуги и цены — студия звукозаписи C.Records, Тверь",
-//   description: "Запись вокала 2000₽/час, сведение от 5000₽, мастеринг 1000₽, аранжировка от 10000₽. Студия в Твери.",
-// };
 export default Services;

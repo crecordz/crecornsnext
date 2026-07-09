@@ -18,7 +18,7 @@
 .portfolio__wrapper {
   display: flex;
   justify-content: center;
-  gap: 100px;
+  gap: 70px;
 }
 
 .portfolio__audio {
@@ -59,7 +59,7 @@
 }
 
 .portfolio__item {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   margin-top: 0;
   max-width: 512px;
 }

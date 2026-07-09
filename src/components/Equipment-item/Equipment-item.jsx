@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import "./Equipment-item.css";
 import gsap from "gsap";
 
-function EquipmentItem({ title }) {
+const EquipmentItem = forwardRef(function EquipmentItem({ title }, ref) {
   const blinkRef = useRef();
   const randomDelay = gsap.utils.random(0, 40);
 
@@ -36,14 +36,15 @@ function EquipmentItem({ title }) {
       tl.kill();
     };
   }, [randomDelay]);
+
   return (
-    <li className="equipment-title">
+    <li className="equipment-title" ref={ref} style={{ opacity: 0 }}>
       <p className="equipment-title__title">{title}</p>
       <div className="equipment-title__line">
         <div className="blink" ref={blinkRef}></div>
       </div>
     </li>
   );
-}
+});
 
 export default EquipmentItem;

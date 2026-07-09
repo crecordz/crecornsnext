@@ -2,11 +2,9 @@
 import Script from "next/script";
 import styles from "./page.module.css";
 import { useCallback, useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { animateElement } from "../../utils/utils";
 
-gsap.registerPlugin(ScrollTrigger);
+
+
 
 const VK_PLAYLIST = {
   elementId: "vk_playlist_-25681218_76349455",
@@ -22,14 +20,15 @@ function Portfolio() {
   const paragraph3 = useRef();
   const paragraph4 = useRef();
   const paragraph5 = useRef();
-
+  const initializedRef = useRef(false);
   const initVkPlaylist = useCallback(() => {
+    if (initializedRef.current) return; // уже создан — выходим
     if (!window.VK?.Widgets?.Playlist) return;
+
     const container = document.getElementById(VK_PLAYLIST.elementId);
     if (!container) return;
-  
+
     container.innerHTML = "";
-  
     window.VK.Widgets.Playlist(
       VK_PLAYLIST.elementId,
       VK_PLAYLIST.ownerId,
@@ -37,80 +36,81 @@ function Portfolio() {
       VK_PLAYLIST.hash,
       { width: 320 }
     );
+    initializedRef.current = true;
   }, []);
 
   useEffect(() => {
     window.vkAsyncInit = initVkPlaylist;
   
-    // if (window.VK?.Widgets?.Playlist) {
-    //   initVkPlaylist();
-    // }
+    if (window.VK?.Widgets?.Playlist) {
+      initVkPlaylist();
+    }
   }, [initVkPlaylist]);
 
-  useEffect(() => {
-    const pin2 = animateElement(
-      ref,
-      paragraph1,
-      "top center-=20%",
-      "bottom center",
-      "5vw",
-      "0",
-      0.2,
-      "none,",
-      0.5
-    );
-    const pin3 = animateElement(
-      ref,
-      paragraph2,
-      "top center-=20%",
-      "bottom center",
-      "5vw",
-      "0",
-      0.4,
-      "none,",
-      0.5
-    );
-    const pin4 = animateElement(
-      ref,
-      paragraph3,
-      "top center-=20%",
-      "bottom center",
-      "5vw",
-      "0",
-      0.6,
-      "none,",
-      0.5
-    );
-    const pin5 = animateElement(
-      ref,
-      paragraph4,
-      "top center-=20%",
-      "bottom center",
-      "5vw",
-      "0",
-      0.8,
-      "none,",
-      0.5
-    );
-    const pin6 = animateElement(
-      ref,
-      paragraph5,
-      "top center-=20%",
-      "bottom center",
-      "5vw",
-      "0",
-      1,
-      "none,",
-      0.5
-    );
-    return () => {
-      pin2.kill();
-      pin3.kill();
-      pin4.kill();
-      pin5.kill();
-      pin6.kill();
-    };
-  }, []);
+  // useEffect(() => {
+  //   const pin2 = animateElement(
+  //     ref,
+  //     paragraph1,
+  //     "top center-=20%",
+  //     "bottom center",
+  //     "5vw",
+  //     "0",
+  //     0.2,
+  //     "none,",
+  //     0.5
+  //   );
+  //   const pin3 = animateElement(
+  //     ref,
+  //     paragraph2,
+  //     "top center-=20%",
+  //     "bottom center",
+  //     "5vw",
+  //     "0",
+  //     0.4,
+  //     "none,",
+  //     0.5
+  //   );
+  //   const pin4 = animateElement(
+  //     ref,
+  //     paragraph3,
+  //     "top center-=20%",
+  //     "bottom center",
+  //     "5vw",
+  //     "0",
+  //     0.6,
+  //     "none,",
+  //     0.5
+  //   );
+  //   const pin5 = animateElement(
+  //     ref,
+  //     paragraph4,
+  //     "top center-=20%",
+  //     "bottom center",
+  //     "5vw",
+  //     "0",
+  //     0.8,
+  //     "none,",
+  //     0.5
+  //   );
+  //   const pin6 = animateElement(
+  //     ref,
+  //     paragraph5,
+  //     "top center-=20%",
+  //     "bottom center",
+  //     "5vw",
+  //     "0",
+  //     1,
+  //     "none,",
+  //     0.5
+  //   );
+  //   return () => {
+  //     pin2.kill();
+  //     pin3.kill();
+  //     pin4.kill();
+  //     pin5.kill();
+  //     pin6.kill();
+  //   };
+  // }, []);
 
   return (
     <section className={styles.portfolio} ref={ref}>
