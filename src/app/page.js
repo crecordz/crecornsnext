@@ -3,9 +3,10 @@ import styles from "./page.module.css";
 import { useEffect, useRef, useState } from "react";
 
 import wall from "../images/wall2.png";
+import { assetPath } from "../utils/assetPath";
 import { getImageSrc } from "../utils/utils";
 
-const video = "/video2.m4a";
+const video = assetPath("/video2.m4a");
 
 export default function Home() {
   const videoRef = useRef();

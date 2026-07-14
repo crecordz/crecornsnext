@@ -1,13 +1,19 @@
 /** @type {import('next').NextConfig} */
 
+const basePath = "/crecornsnext";
+
 const nextConfig = {
   output: "export",
 
   trailingSlash: true,
 
-  basePath: "/crecornsnext",
+  basePath,
 
-  assetPrefix: "/crecornsnext",
+  assetPrefix: basePath,
+
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 
   images: {
     unoptimized: true,
